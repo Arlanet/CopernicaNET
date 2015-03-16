@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arlanet.CopernicaNET", "Src\CopernicaNET\Arlanet.CopernicaNET.csproj", "{08483CD1-9FBA-4E4F-9AF4-7A9F8D87A6D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arlanet.CopernicaNET.Tests", "Src\CopernicaNET.Tests\Arlanet.CopernicaNET.Tests.csproj", "{C6E49FC9-0578-4D1C-B11F-97A3257EBD92}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arlanet.CopernicaNET.Sample", "Src\CopernicaNET.Sample\Arlanet.CopernicaNET.Sample.csproj", "{FACF2C82-8078-4C9D-B86D-4D6D84D17A85}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AD3BB941-4205-45B9-8640-DCCABC3FA725}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{11C5E327-0EC1-4B03-BC64-3662FC45C9FD}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{08483CD1-9FBA-4E4F-9AF4-7A9F8D87A6D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08483CD1-9FBA-4E4F-9AF4-7A9F8D87A6D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08483CD1-9FBA-4E4F-9AF4-7A9F8D87A6D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08483CD1-9FBA-4E4F-9AF4-7A9F8D87A6D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6E49FC9-0578-4D1C-B11F-97A3257EBD92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6E49FC9-0578-4D1C-B11F-97A3257EBD92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6E49FC9-0578-4D1C-B11F-97A3257EBD92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6E49FC9-0578-4D1C-B11F-97A3257EBD92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FACF2C82-8078-4C9D-B86D-4D6D84D17A85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FACF2C82-8078-4C9D-B86D-4D6D84D17A85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FACF2C82-8078-4C9D-B86D-4D6D84D17A85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FACF2C82-8078-4C9D-B86D-4D6D84D17A85}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

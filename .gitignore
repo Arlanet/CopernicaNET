@@ -1,0 +1,6 @@
+TestResults
+packages
+bin
+obj
+*.suo
+*.user
