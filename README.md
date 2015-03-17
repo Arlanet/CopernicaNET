@@ -8,6 +8,7 @@ The library is not feature complete and without a doubt has room for improvement
 
 For example: 
 
+- It only supports .NET Framework 4.5 or higher right now.
 - It does not support receiving information from Copernica, only sending. 
 - Current workings force you to have an ID-field in your Copernica-tables.
 
@@ -18,6 +19,11 @@ To be able to use the library or its samples you need to specify an access token
 
 ##Documentation
 Please resort to the Wiki for more information.
+
+##NuGet
+We also submitted the latest version of this package to NuGet:
+
+    PM> Install-Package Arlanet.CopernicaNET
 
 ##Projects
 The solution contains the following projects.
