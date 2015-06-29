@@ -201,7 +201,7 @@ namespace Arlanet.CopernicaNET
         /// <typeparam name="T1"></typeparam>
         /// <param name="inputprofile"></param>
         /// <returns></returns>
-        public T1 GetProfileByKey<T1>(T1 inputprofile) where T1 : CopernicaProfile, new()
+        public T GetProfileByKey<T>(T1 inputprofile) where T : CopernicaProfile, new()
         {
             //ValidateProfile<T>(inputprofile);
             //TODO: Zorgen dat er meer identifiers kunnen! + Toevoegen aan documentatie
@@ -216,7 +216,7 @@ namespace Arlanet.CopernicaNET
             {
                 //Convert it to an object and return it as T
                 object outputprofile = JsonConvert.DeserializeObject(response, typeof (T));
-                return (T1) outputprofile;
+                return (T) outputprofile;
             }
             catch (NullReferenceException)
             {
