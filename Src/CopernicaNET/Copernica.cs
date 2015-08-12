@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Arlanet.CopernicaNET.Attributes;
+using Arlanet.CopernicaNET.Configuration;
 using Arlanet.CopernicaNET.Data;
 using Arlanet.CopernicaNET.Helpers;
 using Arlanet.CopernicaNET.Interfaces.Data;
@@ -13,6 +14,11 @@ namespace Arlanet.CopernicaNET
     public class Copernica<T> where T : ICopernicaHandlerBase, new()
     {
         #region Constructors
+		public Copernica()
+			: this(CopernicaSettings.Settings.AccessToken)
+		{
+		}
+
         public Copernica(string accesstoken)
         {
             _accesstoken = accesstoken;
@@ -201,7 +207,7 @@ namespace Arlanet.CopernicaNET
         /// <typeparam name="T1"></typeparam>
         /// <param name="inputprofile"></param>
         /// <returns></returns>
-        public T GetProfileByKey<T>(T1 inputprofile) where T : CopernicaProfile, new()
+        public T GetProfileByKey<T>(T inputprofile) where T : CopernicaProfile, new()
         {
             //ValidateProfile<T>(inputprofile);
             //TODO: Zorgen dat er meer identifiers kunnen! + Toevoegen aan documentatie

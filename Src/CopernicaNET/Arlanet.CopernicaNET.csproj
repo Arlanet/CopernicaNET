@@ -40,6 +40,7 @@
       <HintPath>..\..\packages\Newtonsoft.Json.6.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Runtime.Serialization" />
@@ -55,8 +56,12 @@
     <Compile Include="Attributes\CopernicaDatabase.cs" />
     <Compile Include="Attributes\CopernicaField.cs" />
     <Compile Include="Attributes\CopernicaKeyField.cs" />
+    <Compile Include="Configuration\CopernicaSettings.cs" />
     <Compile Include="Copernica.cs" />
     <Compile Include="Data\CopernicaBase.cs" />
+    <Compile Include="Data\CopernicaConfigurableBase.cs" />
+    <Compile Include="Data\CopernicaConfigurableProfile.cs" />
+    <Compile Include="Data\CopernicaConfigurableSubProfile.cs" />
     <Compile Include="Data\CopernicaFieldTypes.cs" />
     <Compile Include="Data\CopernicaSubprofile.cs" />
     <Compile Include="Data\CopernicaProfile.cs" />
