@@ -201,7 +201,7 @@ namespace Arlanet.CopernicaNET
         /// <typeparam name="T1"></typeparam>
         /// <param name="inputprofile"></param>
         /// <returns></returns>
-        public T GetProfileByKey<T>(T1 inputprofile) where T : CopernicaProfile, new()
+        public T GetProfileByKey<T>(T inputprofile) where T : CopernicaProfile, new()
         {
             //ValidateProfile<T>(inputprofile);
             //TODO: Zorgen dat er meer identifiers kunnen! + Toevoegen aan documentatie
