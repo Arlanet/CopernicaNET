@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Arlanet.CopernicaNET.Attributes;
+using Arlanet.CopernicaNET.Configuration;
 using Arlanet.CopernicaNET.Data;
 using Arlanet.CopernicaNET.Helpers;
 using Arlanet.CopernicaNET.Interfaces.Data;
@@ -13,6 +14,11 @@ namespace Arlanet.CopernicaNET
     public class Copernica<T> where T : ICopernicaHandlerBase, new()
     {
         #region Constructors
+		public Copernica()
+			: this(CopernicaSettings.Settings.AccessToken)
+		{
+		}
+
         public Copernica(string accesstoken)
         {
             _accesstoken = accesstoken;
