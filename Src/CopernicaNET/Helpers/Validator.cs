@@ -31,7 +31,7 @@ namespace Arlanet.CopernicaNET.Helpers
                 {
                     throw new CopernicaException(String.Format("The field '{0}' does not match with any field in the copernica database. Make sure the name and database ID are correct.", objectfield.Name));
                 }
-                if (copernicafield.Length != objectfield.Length && copernicafield.Length != 0 && copernicafield.Length != 0)
+				if ((copernicafield.Type == CopernicaFieldTypes.EmailField || copernicafield.Type == CopernicaFieldTypes.TextField || copernicafield.Type == CopernicaFieldTypes.LargeTextField) && copernicafield.Length != objectfield.Length && copernicafield.Length != 0 && copernicafield.Length != 0)
                 {
                     throw new CopernicaException(String.Format("Field length mismatch on '{0}', the length is '{1}' and should be '{2}'", objectfield.Name, objectfield.Length, copernicafield.Length));
                 }
