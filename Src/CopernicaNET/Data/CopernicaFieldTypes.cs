@@ -14,6 +14,7 @@
         public const string PhoneField = "phone";
         public const string PhoneFaxField = "phone_fax";
         public const string PhoneGsmField = "phone_gsm";
+		public const string SelectField = "select";
         public const string ForeignKeyField = "foreign_key";
     }
 }
