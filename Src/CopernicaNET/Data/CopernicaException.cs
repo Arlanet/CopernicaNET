@@ -6,21 +6,38 @@ namespace Arlanet.CopernicaNET.Data
     public class CopernicaException : Exception
     {
         public CopernicaException()
-        : base() { }
-    
+        {
+            //Do nothing
+        }
+
         public CopernicaException(string message)
-            : base(message) { }
-    
+            : base(message)
+        {
+            //Do nothing
+        }
+
         public CopernicaException(string format, params object[] args)
-            : base(string.Format(format, args)) { }
-    
+            : base(string.Format(format, args))
+        {
+            //Do nothing
+        }
+
         public CopernicaException(string message, Exception innerException)
-            : base(message, innerException) { }
-    
+            : base(message, innerException)
+        {
+            //Do nothing
+        }
+
         public CopernicaException(string format, Exception innerException, params object[] args)
-            : base(string.Format(format, args), innerException) { }
+            : base(string.Format(format, args), innerException)
+        {
+            //Do nothing
+        }
 
         protected CopernicaException(SerializationInfo info, StreamingContext context)
-            : base(info, context) { }
+            : base(info, context)
+        {
+            //Do nothing
+        }
     }
 }

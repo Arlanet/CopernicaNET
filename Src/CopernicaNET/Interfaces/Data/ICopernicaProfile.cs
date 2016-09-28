@@ -2,10 +2,7 @@
 
 namespace Arlanet.CopernicaNET.Interfaces.Data
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    public interface ICopernicaProfile: ICopernicaDataItem
+    public interface ICopernicaProfile : ICopernicaDataItem
     {
         string GetKeyFieldValue();
         string GetKeyFieldName();

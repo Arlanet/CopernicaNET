@@ -1,5 +1,4 @@
-﻿using System;
-using System.Reflection;
+﻿using System.Reflection;
 using Arlanet.CopernicaNET.Attributes;
 using Arlanet.CopernicaNET.Interfaces.Data;
 
@@ -11,12 +10,14 @@ namespace Arlanet.CopernicaNET.Data
         {
             get
             {
-                Type type = this.GetType();
-                var db = type.GetCustomAttribute<CopernicaDatabase>();
-                if (db == null)
+                var copernicaDatabase = GetType().GetCustomAttribute<CopernicaDatabase>();
+
+                if (copernicaDatabase == null)
+                {
                     throw new CopernicaException("Database attribute is expected.");
-                else
-                    return db.Id;
+                }
+
+                return copernicaDatabase.Id;
             }
         }
     }

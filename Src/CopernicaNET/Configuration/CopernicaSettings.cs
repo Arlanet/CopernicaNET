@@ -1,32 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Arlanet.CopernicaNET.Configuration
 {
 	public class CopernicaSettings : ConfigurationSection
 	{
-		/// <summary>
-		/// 
-		/// </summary>
-		private static CopernicaSettings _settings = ConfigurationManager.GetSection("copernicanet") as CopernicaSettings;
+		private static readonly CopernicaSettings _settings = ConfigurationManager.GetSection("copernicanet") as CopernicaSettings;
 
 		public static CopernicaSettings Settings
 		{
 			get
 			{
-				if (_settings == null)
-					throw new ConfigurationErrorsException("Arlanet CopernicaNET settings not configured!");
+			    if (_settings == null)
+			    {
+			        throw new ConfigurationErrorsException("Arlanet CopernicaNET settings not configured!");
+			    }
+
 				return _settings;
 			}
 		}
-
-		/// <summary>
-		/// The client username for logging on to Intersolve
-		/// </summary>
 		[ConfigurationProperty("accesstoken", IsRequired = false)]
 		public string AccessToken
 		{
@@ -47,12 +39,7 @@ namespace Arlanet.CopernicaNET.Configuration
 
 	public class ModelConfiguration : ConfigurationElement
 	{
-		public ModelConfiguration()
-		{
-
-		}
-
-		[ConfigurationProperty("name", IsRequired = true)]
+	    [ConfigurationProperty("name", IsRequired = true)]
 		public string Name
 		{
 			get { return (string)this["name"]; }
@@ -110,31 +97,31 @@ namespace Arlanet.CopernicaNET.Configuration
 			return ((ModelConfiguration)element).Name;
 		}
 
-		public ModelConfiguration this[int Index]
+		public ModelConfiguration this[int index]
 		{
 			get
 			{
-				return (ModelConfiguration)BaseGet(Index);
+				return (ModelConfiguration)BaseGet(index);
 			}
 			set
 			{
-				if (BaseGet(Index) != null)
+				if (BaseGet(index) != null)
 				{
-					BaseRemoveAt(Index);
+					BaseRemoveAt(index);
 				}
-				BaseAdd(Index, value);
+				BaseAdd(index, value);
 			}
 		}
 
-		new public ModelConfiguration this[string Name]
+		public new ModelConfiguration this[string name]
 		{
 			get
 			{
-				return (ModelConfiguration)BaseGet(Name);
+				return (ModelConfiguration)BaseGet(name);
 			}
 		}
 
-		public int indexof(ModelConfiguration element)
+		public int IndexOf(ModelConfiguration element)
 		{
 			return BaseIndexOf(element);
 		}
@@ -162,10 +149,9 @@ namespace Arlanet.CopernicaNET.Configuration
 
 		public new IEnumerator<ModelConfiguration> GetEnumerator()
 		{
-			var count = base.Count;
-			for (var i = 0; i < count; i++)
+			for (var i = 0; i < Count; i++)
 			{
-				yield return base.BaseGet(i) as ModelConfiguration;
+				yield return BaseGet(i) as ModelConfiguration;
 			}
 		}
 	}

@@ -8,7 +8,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Arlanet.CopernicaNET.Helpers
 {
-    public class JsonFieldsConverter: JsonConverter
+    public class JsonFieldsConverter : JsonConverter
     {
         
         public override bool CanConvert(Type objectType)
@@ -44,7 +44,7 @@ namespace Arlanet.CopernicaNET.Helpers
             //Parse the data until only the object is left.
             dynamic a = JObject.Parse(data.First.ToString());
             dynamic b = JObject.Parse(a["fields"].ToString());
-            var obj = (Object)Activator.CreateInstance(objectType);
+            var obj = Activator.CreateInstance(objectType);
             var jobject = new JObject(b);
 
             //Get all the properties and loop trough them. Then add all the properties with the correct names from je object.

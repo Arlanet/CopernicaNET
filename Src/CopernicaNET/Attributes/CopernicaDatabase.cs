@@ -1,10 +1,16 @@
 ﻿namespace Arlanet.CopernicaNET.Attributes
 {
-    public class CopernicaDatabase: CopernicaAttributeBase
+    public class CopernicaDatabase : CopernicaAttributeBase
     {
-        public CopernicaDatabase(int id) : base(id)
+        protected CopernicaDatabase()
         {
-            
+            //Do nothing
+        }
+
+        public CopernicaDatabase(int id)
+            : base(id)
+        {
+            //Do nothing
         }
     }
 }

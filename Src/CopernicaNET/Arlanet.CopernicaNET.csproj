@@ -53,21 +53,19 @@
   <ItemGroup>
     <Compile Include="Attributes\CopernicaAttributeBase.cs" />
     <Compile Include="Attributes\CopernicaCollection.cs" />
+    <Compile Include="Attributes\CopernicaConfigurableCollection.cs" />
+    <Compile Include="Attributes\CopernicaConfigurableDatabase.cs" />
     <Compile Include="Attributes\CopernicaDatabase.cs" />
     <Compile Include="Attributes\CopernicaField.cs" />
     <Compile Include="Attributes\CopernicaKeyField.cs" />
     <Compile Include="Configuration\CopernicaSettings.cs" />
     <Compile Include="Copernica.cs" />
     <Compile Include="Data\CopernicaBase.cs" />
-    <Compile Include="Data\CopernicaConfigurableBase.cs" />
-    <Compile Include="Data\CopernicaConfigurableProfile.cs" />
-    <Compile Include="Data\CopernicaConfigurableSubProfile.cs" />
     <Compile Include="Data\CopernicaFieldTypes.cs" />
     <Compile Include="Data\CopernicaSubprofile.cs" />
     <Compile Include="Data\CopernicaProfile.cs" />
     <Compile Include="Data\CopernicaException.cs" />
     <Compile Include="Helpers\CopernicaDataHandler.cs" />
-    <Compile Include="Helpers\CopernicaDataTestHandler.cs" />
     <Compile Include="Helpers\JsonFieldsConverter.cs" />
     <Compile Include="Helpers\RequestHandler.cs" />
     <Compile Include="Helpers\Validator.cs" />
@@ -78,9 +76,7 @@
     <Compile Include="Interfaces\Data\ICopernicaProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Examples\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

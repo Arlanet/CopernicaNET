@@ -57,6 +57,7 @@
     <Compile Include="Classes\Person.cs" />
     <Compile Include="Classes\Person_NoDatabaseId.cs" />
     <Compile Include="Copernica.cs" />
+    <Compile Include="CopernicaDataTestHandler.cs" />
     <Compile Include="CopernicaHandler_NoDatabaseId.cs" />
     <Compile Include="CopernicaHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

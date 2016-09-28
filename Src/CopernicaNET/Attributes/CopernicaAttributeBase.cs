@@ -2,12 +2,17 @@
 
 namespace Arlanet.CopernicaNET.Attributes
 {
-    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
-    public class CopernicaAttributeBase: Attribute
+    [AttributeUsage(AttributeTargets.Class, Inherited = false)]
+    public abstract class CopernicaAttributeBase : Attribute
     {
-         public int Id { get; set; }
+        public int Id { get; set; }
 
-        public CopernicaAttributeBase(int id)
+        protected CopernicaAttributeBase()
+        {
+            //Do nothing
+        }
+
+        protected CopernicaAttributeBase(int id)
         {
             Id = id;
         }

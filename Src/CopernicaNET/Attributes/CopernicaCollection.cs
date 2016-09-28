@@ -1,10 +1,11 @@
 ﻿namespace Arlanet.CopernicaNET.Attributes
 {
-    public class CopernicaCollection: CopernicaAttributeBase
+    public class CopernicaCollection : CopernicaAttributeBase
     {
-        public CopernicaCollection(int id): base(id)
+        public CopernicaCollection(int id)
+            : base(id)
         {
-
+            //Do nothing
         }
     }
 }

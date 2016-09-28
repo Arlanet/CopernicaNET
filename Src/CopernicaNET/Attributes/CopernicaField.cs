@@ -16,7 +16,7 @@ namespace Arlanet.CopernicaNET.Attributes
 
         public CopernicaField(string name)
         {
-            this.Name = name;
+            Name = name;
         }
     }
 }

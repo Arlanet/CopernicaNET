@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using Arlanet.CopernicaNET.Helpers;
 using Arlanet.CopernicaNET.Interfaces.Handlers;
 
-namespace Arlanet.CopernicaNET.Helpers
+namespace Arlanet.CopernicaNET.Tests
 {
     public class CopernicaDataTestHandler: ICopernicaDataHandler
     {
@@ -61,7 +62,7 @@ namespace Arlanet.CopernicaNET.Helpers
 
         public string GetSubProfileFields(int collectionid, string accesstoken)
         {
-            return RequestHandler.Get(String.Format("Collection/{0}/fields?access_token={1}", collectionid, accesstoken));
+            return RequestHandler.Get(string.Format("Collection/{0}/fields?access_token={1}", collectionid, accesstoken));
         }
     }
 }
