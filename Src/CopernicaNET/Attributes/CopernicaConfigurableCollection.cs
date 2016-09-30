@@ -4,7 +4,7 @@ using Arlanet.CopernicaNET.Data;
 
 namespace Arlanet.CopernicaNET.Attributes
 {
-    public class CopernicaConfigurableCollection : CopernicaDatabase
+    public class CopernicaConfigurableCollection : CopernicaCollection
     {
         public CopernicaConfigurableCollection()
         {
