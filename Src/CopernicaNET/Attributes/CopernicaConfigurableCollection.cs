@@ -1,14 +1,14 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Arlanet.CopernicaNET.Configuration;
 using Arlanet.CopernicaNET.Data;
 
 namespace Arlanet.CopernicaNET.Attributes
 {
-    public class CopernicaConfigurableCollection : CopernicaDatabase
+    public class CopernicaConfigurableCollection : CopernicaCollection
     {
-        public CopernicaConfigurableCollection()
+        public CopernicaConfigurableCollection(Type type)
         {
-            var type = GetType();
             var modelConfiguration = CopernicaSettings.Settings.ModelConfigurations.FirstOrDefault(m => m.Name == type.FullName);
 
             if (modelConfiguration == null)
