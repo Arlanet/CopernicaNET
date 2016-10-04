@@ -20,7 +20,7 @@ namespace Arlanet.CopernicaNET.Sample
             //Add the product to the client.
             try
             {
-                CopernicaHandler.Instance.Add(product, client);
+                //CopernicaHandler.Instance.Add(product, client);
                 StatusLabel.Text = "The subprofile has been added";
             }
             catch (CopernicaException ex)

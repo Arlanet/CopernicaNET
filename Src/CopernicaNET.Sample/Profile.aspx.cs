@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using Arlanet.CopernicaNET.Sample.Models;
 using Arlanet.CopernicaNET.Data;
 
@@ -11,6 +12,8 @@ namespace Arlanet.CopernicaNET.Sample
 
         }
 
+        private DbSet<Client> shiz { get; set; }
+
         protected void Add_Profile(object sender, EventArgs e)
         {
             //Create the client
@@ -18,8 +21,17 @@ namespace Arlanet.CopernicaNET.Sample
             
             try
             {
+                
                 //Add the client profile
-                CopernicaHandler.Instance.Add(client);
+                //CopernicaHandler.Instance.Add(client);
+                CopernicaContext context = new CopernicaContext();
+                
+                //shiz.Add(client);
+
+                //CopernicaContext.Clients.Add(client);
+
+                context.Clients.Add(client);
+
                 StatusLabel.Text = "The profile has been added";
             }
             catch (CopernicaException ex)
@@ -36,7 +48,10 @@ namespace Arlanet.CopernicaNET.Sample
             try
             {
                 //Delete the client profile
-                CopernicaHandler.Instance.Delete(client);
+                //CopernicaHandler.Instance.Delete(client);
+                CopernicaContext context = new CopernicaContext();
+                //context.Clients.Remove(client);
+
                 StatusLabel.Text = "The profile has been deleted";
             }
             catch (CopernicaException ex)
@@ -53,7 +68,7 @@ namespace Arlanet.CopernicaNET.Sample
             try
             {
                 //Update the client profile
-                CopernicaHandler.Instance.Update(client);
+               // CopernicaHandler.Instance.Update(client);
                 StatusLabel.Text = "The profile has been updated";
             }
             catch (CopernicaException ex)
