@@ -16,7 +16,7 @@ namespace Arlanet.CopernicaNET.Sample
             //Create the product
             var product = new Product { Name = SubProfileName.Text, Price = Int32.Parse(Price.Text) };
             //Create the client. Only the identifier is needed. 
-            var client = new Client() { ID = Int32.Parse(ProfileID.Text) };
+            var client = new Client() { DatabaseId = Int32.Parse(ProfileID.Text) };
             //Add the product to the client.
             try
             {

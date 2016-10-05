@@ -2,65 +2,40 @@
 using Arlanet.CopernicaNET.Configuration;
 using Arlanet.CopernicaNET.Helpers;
 using Newtonsoft.Json;
+using ExtensionMethods;
+using System;
 
 namespace Arlanet.CopernicaNET.Types
 {
     public class CoperrnicaProfile<T>
     {
-        private static Reflectionist Reflectionist { get; set; }
-        private static CopernicaSettings CopernicaSettings { get; set; }
-        private static CopernicaDataHandler DataHandler { get; set; }
+        private Reflectionist Reflectionist { get; set; }
+        private CopernicaSettings CopernicaSettings { get; set; }
+        private CopernicaDataHandler DataHandler { get; set; }
 
-        static CoperrnicaProfile()
+        private readonly Type Type;
+
+        public CoperrnicaProfile()
         {
             Reflectionist = new Reflectionist();
             CopernicaSettings = new CopernicaSettings();
             DataHandler = new CopernicaDataHandler();
+            Type = GetType();
         }
         
         public T Add(T item)
         {
             string jsondata = JsonConvert.SerializeObject(item);
 
-            DataHandler.CreateProfile(Reflectionist.GetKey(item), jsondata, CopernicaSettings.AccessToken);
+            //We want the database id of the generic argument, not the generic itself
+            DataHandler.CreateProfile(typeof(T).GetDatabaseId(), jsondata, CopernicaSettings.Settings.AccessToken);
 
             return item;
         }
 
-        public static void Remove(T item)
+        public void Remove(T item)
         {
             DataHandler.DeleteProfile(Reflectionist.GetKey(item), CopernicaSettings.AccessToken);
-        }
-    }
-
-    public class CopProfile<T>: List<T>
-    {
-        private Reflectionist Reflectionist { get; set; }
-        private CopernicaSettings CopernicaSettings { get; set; }
-        private CopernicaDataHandler DataHandler { get; set; }
-
-        public CopProfile()
-        {
-            
-            Reflectionist = new Reflectionist();
-            CopernicaSettings = new CopernicaSettings();
-            DataHandler = new CopernicaDataHandler();
-        }
-
-        public new void Add(T item)
-        {
-            string jsondata = JsonConvert.SerializeObject(item);
-            
-            DataHandler.CreateProfile(Reflectionist.GetKey(item), jsondata, CopernicaSettings.AccessToken);
-
-            base.Add(item);
-        }
-
-        public new void Remove(T item)
-        {
-            DataHandler.DeleteProfile(Reflectionist.GetKey(item), CopernicaSettings.AccessToken);
-
-            base.Remove(item);
         }
     }
 }

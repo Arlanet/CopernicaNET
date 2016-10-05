@@ -12,12 +12,10 @@ namespace Arlanet.CopernicaNET.Sample
 
         }
 
-        private DbSet<Client> shiz { get; set; }
-
         protected void Add_Profile(object sender, EventArgs e)
         {
             //Create the client
-            var client = new Client { ID = Int32.Parse(ProfileID.Text), Name = ProfileName.Text, Email = ProfileEmail.Text };
+            var client = new Client { DatabaseId = int.Parse(ProfileID.Text), Name = ProfileName.Text, Email = ProfileEmail.Text };
             
             try
             {
@@ -43,7 +41,7 @@ namespace Arlanet.CopernicaNET.Sample
         protected void Delete_Profile(object sender, EventArgs e)
         {
             //Create the client. Only the CopernicaKeyField property is required to delete the profile.
-            var client = new Client { ID = Int32.Parse(ProfileID.Text) };
+            var client = new Client { DatabaseId = Int32.Parse(ProfileID.Text) };
             
             try
             {
@@ -63,7 +61,7 @@ namespace Arlanet.CopernicaNET.Sample
         protected void Update_Profile(object sender, EventArgs e)
         {
             //Create the client
-            var client = new Client { ID = Int32.Parse(ProfileID.Text), Name = ProfileName.Text, Email = ProfileEmail.Text };
+            var client = new Client { DatabaseId = Int32.Parse(ProfileID.Text), Name = ProfileName.Text, Email = ProfileEmail.Text };
             
             try
             {

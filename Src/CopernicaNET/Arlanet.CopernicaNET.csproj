@@ -67,6 +67,7 @@
     <Compile Include="Data\CopernicaSubprofile.cs" />
     <Compile Include="Data\CopernicaProfile.cs" />
     <Compile Include="Data\CopernicaException.cs" />
+    <Compile Include="Extensions\TypeExtensions.cs" />
     <Compile Include="Helpers\CopernicaDataHandler.cs" />
     <Compile Include="Helpers\JsonFieldsConverter.cs" />
     <Compile Include="Helpers\Reflectionist.cs" />

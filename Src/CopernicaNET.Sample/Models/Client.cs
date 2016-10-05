@@ -22,7 +22,7 @@ namespace Arlanet.CopernicaNET.Sample.Models
     public class Client
     {
         [CopernicaKey]
-        public int ID { get; set; }
+        public int DatabaseId { get; set; }
         
         public string Name { get; set; }
 

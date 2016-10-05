@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Arlanet.CopernicaNET.Attributes;
 using Arlanet.CopernicaNET.Data;
+using Arlanet.CopernicaNET.Configuration;
 
 namespace Arlanet.CopernicaNET.Helpers
 {
@@ -29,6 +30,12 @@ namespace Arlanet.CopernicaNET.Helpers
             string keyValue = property.GetValue(item).ToString();
 
             return Int32.Parse(keyValue);
+        }
+        
+        public int GetDatabaseId(Type type)
+        {
+            var modelConfiguration = CopernicaSettings.Settings.ModelConfigurations.FirstOrDefault(m => m.Name == type.FullName);
+            return modelConfiguration.DatabaseId;
         }
     }
 }
