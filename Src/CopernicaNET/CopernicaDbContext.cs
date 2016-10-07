@@ -12,11 +12,10 @@ namespace Arlanet.CopernicaNET
     {
         public CopernicaDbContext()
         {
-            instantiateProperties();
-           
+            InstantiateProperties();
         }
 
-        private void instantiateProperties()
+        private void InstantiateProperties()
         {
             IEnumerable<PropertyInfo> properties = this.GetType().GetProperties().Where(prop => prop.PropertyType.Name == typeof(CoperrnicaProfile<bool>).Name);
 
