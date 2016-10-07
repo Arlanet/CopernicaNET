@@ -65,7 +65,7 @@
     <Compile Include="Data\CopernicaBase.cs" />
     <Compile Include="Data\CopernicaFieldTypes.cs" />
     <Compile Include="Data\CopernicaSubprofile.cs" />
-    <Compile Include="Data\CopernicaProfile.cs" />
+    <Compile Include="Data\CoperrrnicaProfile.cs" />
     <Compile Include="Data\CopernicaException.cs" />
     <Compile Include="Data\DatabaseCalls.cs" />
     <Compile Include="Helpers\CopernicaDataHandler.cs" />
@@ -80,7 +80,7 @@
     <Compile Include="Interfaces\Data\ICopernicaProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Types\Collection.cs" />
-    <Compile Include="Types\Profile.cs" />
+    <Compile Include="Types\CopernicaProfile.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -3,6 +3,7 @@ using Arlanet.CopernicaNET.Configuration;
 using Arlanet.CopernicaNET.Helpers;
 using Newtonsoft.Json;
 using System;
+using System.Linq.Expressions;
 
 namespace Arlanet.CopernicaNET.Types
 {
@@ -16,9 +17,10 @@ namespace Arlanet.CopernicaNET.Types
 
         public CopernicaProfile()
         {
-            DatabaseId = Reflectionist.GetDatabaseId(typeof(T));
             Reflectionist = new Reflectionist();
             CopernicaSettings = new CopernicaSettings();
+
+            DatabaseId = Reflectionist.GetDatabaseId(typeof(T));
             DataHandler = new CopernicaDataHandler(CopernicaSettings.Settings.AccessToken, DatabaseId);
         }
         
@@ -39,5 +41,14 @@ namespace Arlanet.CopernicaNET.Types
         {
             DataHandler.DeleteProfile(Reflectionist.GetKey(item));
         }
+
+        public IEnumerable<T> FirstOrDefault(Expression<Func<T, bool>> predicate)
+        {
+            var expression = (BinaryExpression)predicate.Body;
+            var fieldName = (expression.Left as MemberExpression).Member.Name;
+            var fieldValue = (expression.Right as ConstantExpression).Value;
+            //DataHandler.GetProfileByField(name, name);
+            return new List<T>();
+        } 
     }
 }

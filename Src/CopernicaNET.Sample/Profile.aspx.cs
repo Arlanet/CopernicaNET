@@ -23,13 +23,14 @@ namespace Arlanet.CopernicaNET.Sample
                 //Add the client profile
                 //CopernicaHandler.Instance.Add(client);
                 CopernicaContext context = new CopernicaContext();
-                
+
                 //shiz.Add(client);
 
                 //CopernicaContext.Clients.Add(client);
+                var clients = context.Clients.FirstOrDefault(x => x.Name == "Shiz");
 
                 context.Clients.Add(client);
-
+                
                 StatusLabel.Text = "The profile has been added";
             }
             catch (CopernicaException ex)
