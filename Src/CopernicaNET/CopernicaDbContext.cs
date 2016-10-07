@@ -17,7 +17,7 @@ namespace Arlanet.CopernicaNET
 
         private void InstantiateProperties()
         {
-            IEnumerable<PropertyInfo> properties = this.GetType().GetProperties().Where(prop => prop.PropertyType.Name == typeof(CoperrnicaProfile<bool>).Name);
+            IEnumerable<PropertyInfo> properties = this.GetType().GetProperties().Where(prop => prop.PropertyType.Name == typeof(CopernicaProfile<Object>).Name);
 
             foreach(PropertyInfo property in properties)
             {

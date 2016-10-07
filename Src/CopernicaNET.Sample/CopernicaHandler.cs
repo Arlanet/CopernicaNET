@@ -14,6 +14,6 @@ namespace Arlanet.CopernicaNET.Sample
 
     public class CopernicaContext : CopernicaDbContext
     {
-        public CoperrnicaProfile<Client> Clients { get; set; }
+        public CopernicaProfile<Client> Clients { get; set; }
     }
 }

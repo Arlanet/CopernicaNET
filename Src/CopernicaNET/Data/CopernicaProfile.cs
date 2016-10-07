@@ -10,9 +10,9 @@ using Newtonsoft.Json;
 namespace Arlanet.CopernicaNET.Data
 {
     [JsonConverter(typeof(JsonFieldsConverter))]
-    public abstract class CopernicaProfile : CopernicaBase, ICopernicaProfile
+    public abstract class CoperrrnicaProfile : CopernicaBase, ICopernicaProfile
     {
-        protected CopernicaProfile()
+        protected CoperrrnicaProfile()
         {
             ValidateFields();
         }

@@ -6,7 +6,7 @@ using System;
 
 namespace Arlanet.CopernicaNET.Types
 {
-    public class CoperrnicaProfile<T> where T : class, new()
+    public class CopernicaProfile<T> where T : class, new()
     {
         private Reflectionist Reflectionist { get; }
         private CopernicaSettings CopernicaSettings { get; }
@@ -14,7 +14,7 @@ namespace Arlanet.CopernicaNET.Types
 
         private int DatabaseId { get; }
 
-        public CoperrnicaProfile()
+        public CopernicaProfile()
         {
             Reflectionist = new Reflectionist();
             CopernicaSettings = new CopernicaSettings();
