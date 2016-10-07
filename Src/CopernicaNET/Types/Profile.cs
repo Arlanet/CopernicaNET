@@ -16,23 +16,28 @@ namespace Arlanet.CopernicaNET.Types
 
         public CopernicaProfile()
         {
+            DatabaseId = Reflectionist.GetDatabaseId(typeof(T));
             Reflectionist = new Reflectionist();
             CopernicaSettings = new CopernicaSettings();
-            DataHandler = new CopernicaDataHandler();
-            DatabaseId = Reflectionist.GetDatabaseId(typeof (T));
+            DataHandler = new CopernicaDataHandler(CopernicaSettings.Settings.AccessToken, DatabaseId);
         }
         
         public T Add(T item)
         {
             string jsondata = JsonConvert.SerializeObject(item);
-            DataHandler.CreateProfile(DatabaseId, jsondata, CopernicaSettings.Settings.AccessToken);
+            DataHandler.CreateProfile(jsondata);
 
             return item;
         }
 
+        public void Update(T item)
+        {
+            
+        }
+
         public void Remove(T item)
         {
-            DataHandler.DeleteProfile(Reflectionist.GetKey(item), CopernicaSettings.AccessToken);
+            DataHandler.DeleteProfile(Reflectionist.GetKey(item));
         }
     }
 }
