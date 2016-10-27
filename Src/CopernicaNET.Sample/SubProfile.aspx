@@ -12,7 +12,15 @@
             <div class="col-md-3">
                 <asp:TextBox runat="server" ID="ProfileID" CssClass="form-control" TextMode="Number" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="ProfileID"
-                    CssClass="text-danger" ErrorMessage="The ID field is required." />
+                    CssClass="text-danger" ErrorMessage="The Profile ID field is required." />
+            </div>
+        </div>
+        <div class="form-group">
+            <asp:Label ID="Label1" runat="server" AssociatedControlID="ProductID" CssClass="col-md-2 control-label">Product ID</asp:Label>
+            <div class="col-md-3">
+                <asp:TextBox runat="server" ID="ProductID" CssClass="form-control" TextMode="Number" />
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="ProductID"
+                    CssClass="text-danger" ErrorMessage="The Product ID field is required." />
             </div>
         </div>
         <div class="form-group">
@@ -34,6 +42,7 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <asp:Button runat="server" OnClick="Add_SubProfile" Text="Register" CssClass="btn btn-default" />
+                <asp:Button runat="server" OnClick="Update_SubProfile" Text="Update" CssClass="btn btn-default" />
             </div>
         </div>
             <div class="form-group">

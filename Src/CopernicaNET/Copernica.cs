@@ -147,6 +147,13 @@ namespace Arlanet.CopernicaNET
             }
         }
 
+        public void Update(ICopernicaSubprofile subprofile)
+        {
+            string jsondata = JsonConvert.SerializeObject(subprofile);
+            var id = GetCopernicaSubProfileId(subprofile);
+            _dataHandler.UpdateSubProfile(id, jsondata, _accesstoken);
+        }
+
         /// <summary>
         /// Updates the specified profiles.
         /// </summary>
@@ -263,6 +270,22 @@ namespace Arlanet.CopernicaNET
             catch (Exception ex)
             {
                 throw new CopernicaException("The profile was not found.", ex);
+            }
+        }
+
+        private int GetCopernicaSubProfileId(ICopernicaSubprofile subprofile)
+        {
+            var response = _dataHandler.GetSubProfileByKey(subprofile.CollectionId, subprofile.GetKeyFieldName(), subprofile.GetKeyFieldValue(), _accesstoken);
+            dynamic data = JObject.Parse(response);
+
+            try
+            {
+                var id = data.data[0].ID.Value;
+                return Int32.Parse(id);
+            }
+            catch (Exception ex)
+            {
+                throw new CopernicaException("The subprofile was not found.", ex);
             }
         }
 

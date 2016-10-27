@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 namespace Arlanet.CopernicaNET.Data
 {
     [JsonConverter(typeof(JsonFieldsConverter))]
-    public class CopernicaSubprofile : CopernicaBase, ICopernicaSubprofile
+    public class CopernicaSubprofile : CopernicaProfile, ICopernicaSubprofile
     {
         public int CollectionId
         {
