@@ -60,6 +60,16 @@ namespace Arlanet.CopernicaNET.Helpers
             RequestHandler.Post(string.Format("subprofile/{0}/fields?access_token={1}", databaseid, accesstoken), jsondata);
         }
 
+        public void CreateOrUpdateProfile(int databaseid, string keyname, string keyvalue, string jsondata, string accesstoken)
+        {
+            RequestHandler.Put(string.Format("database/{0}/profiles?access_token={1}&fields[]={2}=={3}&create=true", databaseid, accesstoken, keyname, keyvalue), jsondata);
+        }
+
+        public void CreateOrUpdateSubProfile(int collectionid, int profileid, string keyname, string keyvalue, string jsondata, string accesstoken)
+        {
+            RequestHandler.Put(string.Format("profile/{0}/subprofiles/{1}?access_token={2}&fields[]={3}=={4}&create=true", profileid, collectionid, accesstoken, keyname, keyvalue), jsondata);
+        }
+
         public string GetProfileFields(int databaseid, string accesstoken)
         {
             return RequestHandler.Get(string.Format("database/{0}/fields?access_token={1}", databaseid, accesstoken));

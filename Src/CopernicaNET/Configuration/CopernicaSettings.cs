@@ -19,6 +19,7 @@ namespace Arlanet.CopernicaNET.Configuration
 				return _settings;
 			}
 		}
+
 		[ConfigurationProperty("accesstoken", IsRequired = false)]
 		public string AccessToken
 		{
@@ -27,6 +28,15 @@ namespace Arlanet.CopernicaNET.Configuration
 				return (string)base["accesstoken"];
 			}
 		}
+
+        [ConfigurationProperty("apiurl", IsRequired = false)]
+        public string ApiUrl
+        {
+            get
+            {
+                return (string)base["apiurl"];
+            }
+        }
 
 		[ConfigurationProperty("models")]
 		[ConfigurationCollection(typeof(ModelConfigurationElementCollection), AddItemName = "model")]

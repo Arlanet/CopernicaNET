@@ -71,6 +71,16 @@ namespace Arlanet.CopernicaNET.Tests
 
         }
 
+        public void CreateOrUpdateProfile(int databaseid, string keyname, string keyvalue, string jsondata, string accesstoken)
+        {
+
+        }
+
+        public void CreateOrUpdateSubProfile(int collectionid, int profileid, string keyname, string keyvalue, string jsondata, string accesstoken)
+        {
+
+        }
+
         public string GetProfileFields(int databaseid, string accesstoken)
         {
             return fields;

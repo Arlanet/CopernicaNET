@@ -134,6 +134,38 @@ namespace Arlanet.CopernicaNET
         /// </summary>
         /// <param name="profile"></param>
         /// <returns></returns>
+        public void CreateOrUpdate(ICopernicaProfile profile)
+        {
+            var value = profile.GetKeyFieldValue();
+
+            if (value != "0")
+            {
+                string keyname = profile.GetKeyFieldName();
+                string keyvalue = profile.GetKeyFieldValue();
+                string jsondata = JsonConvert.SerializeObject(profile);
+                _dataHandler.CreateOrUpdateProfile(profile.DatabaseId, keyname, keyvalue, jsondata, _accesstoken);
+            }
+        }
+
+        public void CreateOrUpdate(ICopernicaSubprofile subprofile, ICopernicaProfile refprofile)
+        {
+
+            var value = subprofile.GetKeyFieldValue();
+            if (value != "0")
+            {
+                string keyname = subprofile.GetKeyFieldName();
+                string keyvalue = subprofile.GetKeyFieldValue();
+                string jsondata = JsonConvert.SerializeObject(subprofile);
+                var id = GetCopernicaProfileId(refprofile);
+                _dataHandler.CreateOrUpdateSubProfile(subprofile.CollectionId, id, keyname, keyvalue, jsondata, _accesstoken);
+            }
+        }
+
+        /// <summary>
+        /// Updates the profile using the CopernicaKeyField as identifier. Multiple rows will be updated if multiple rows are found with the same identifier, which is not supposed to happen.
+        /// </summary>
+        /// <param name="profile"></param>
+        /// <returns></returns>
         public void Update(ICopernicaProfile profile)
         {
             var value = profile.GetKeyFieldValue();

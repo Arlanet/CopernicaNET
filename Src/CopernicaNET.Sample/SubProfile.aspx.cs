@@ -45,5 +45,23 @@ namespace Arlanet.CopernicaNET.Sample
                 StatusLabel.Text = ex.Message;
             }
         }
+
+        protected void CreateOrUpdate_SubProfile(object sender, EventArgs e)
+        {
+            //Create the product
+            var product = new Product { ID = Int32.Parse(ProductID.Text), Name = SubProfileName.Text, Price = Int32.Parse(Price.Text) };
+            //Create the client. Only the identifier is needed. 
+            var client = new Client() { ID = Int32.Parse(ProfileID.Text) };
+            //Add the product to the client.
+            try
+            {
+                CopernicaHandler.Instance.CreateOrUpdate(product, client);
+                StatusLabel.Text = "The subprofile has been added or updated";
+            }
+            catch (CopernicaException ex)
+            {
+                StatusLabel.Text = ex.Message;
+            }
+        }
     }
 }

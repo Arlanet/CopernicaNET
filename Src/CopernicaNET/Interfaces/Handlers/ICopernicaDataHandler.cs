@@ -23,6 +23,11 @@ namespace Arlanet.CopernicaNET.Interfaces.Handlers
         void UpdateProfile(int databaseid, string keyname, string keyvalue, string jsondata, string accesstoken);
 
         void UpdateSubProfile(int databaseid, string jsondata, string accesstoken);
+
+        void CreateOrUpdateProfile(int databaseid, string keyname, string keyvalue, string jsondata, string accesstoken);
+
+        void CreateOrUpdateSubProfile(int collectionid, int profileid, string keyname, string keyvalue, string jsondata, string accesstoken);
+        
         string GetProfileFields(int databaseid, string accesstoken);
         string GetSubProfileFields(int collectionid, string accesstoken);
     }

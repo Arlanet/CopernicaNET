@@ -41,8 +41,9 @@
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <asp:Button runat="server" OnClick="Add_SubProfile" Text="Register" CssClass="btn btn-default" />
+                <asp:Button runat="server" OnClick="Add_SubProfile" Text="Add" CssClass="btn btn-default" />
                 <asp:Button runat="server" OnClick="Update_SubProfile" Text="Update" CssClass="btn btn-default" />
+                <asp:Button runat="server" OnClick="CreateOrUpdate_SubProfile" Text="Add or update" CssClass="btn btn-default" />
             </div>
         </div>
             <div class="form-group">
