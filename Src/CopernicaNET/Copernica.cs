@@ -149,7 +149,6 @@ namespace Arlanet.CopernicaNET
 
         public void CreateOrUpdate(ICopernicaSubprofile subprofile, ICopernicaProfile refprofile)
         {
-
             var value = subprofile.GetKeyFieldValue();
             if (value != "0")
             {
@@ -158,6 +157,18 @@ namespace Arlanet.CopernicaNET
                 string jsondata = JsonConvert.SerializeObject(subprofile);
                 var id = GetCopernicaProfileId(refprofile);
                 _dataHandler.CreateOrUpdateSubProfile(subprofile.CollectionId, id, keyname, keyvalue, jsondata, _accesstoken);
+            }
+        }
+
+        public void CreateOrUpdate(ICopernicaSubprofile subprofile, int profileId)
+        {
+            var value = subprofile.GetKeyFieldValue();
+            if (value != "0")
+            {
+                string keyname = subprofile.GetKeyFieldName();
+                string keyvalue = subprofile.GetKeyFieldValue();
+                string jsondata = JsonConvert.SerializeObject(subprofile);
+                _dataHandler.CreateOrUpdateSubProfile(subprofile.CollectionId, profileId, keyname, keyvalue, jsondata, _accesstoken);
             }
         }
 
