@@ -134,6 +134,38 @@ namespace Arlanet.CopernicaNET
         /// </summary>
         /// <param name="profile"></param>
         /// <returns></returns>
+        public void CreateOrUpdate(ICopernicaProfile profile)
+        {
+            var value = profile.GetKeyFieldValue();
+
+            if (value != "0")
+            {
+                string keyname = profile.GetKeyFieldName();
+                string keyvalue = profile.GetKeyFieldValue();
+                string jsondata = JsonConvert.SerializeObject(profile);
+                _dataHandler.CreateOrUpdateProfile(profile.DatabaseId, keyname, keyvalue, jsondata, _accesstoken);
+            }
+        }
+
+        public void CreateOrUpdate(ICopernicaSubprofile subprofile, ICopernicaProfile refprofile)
+        {
+
+            var value = subprofile.GetKeyFieldValue();
+            if (value != "0")
+            {
+                string keyname = subprofile.GetKeyFieldName();
+                string keyvalue = subprofile.GetKeyFieldValue();
+                string jsondata = JsonConvert.SerializeObject(subprofile);
+                var id = GetCopernicaProfileId(refprofile);
+                _dataHandler.CreateOrUpdateSubProfile(subprofile.CollectionId, id, keyname, keyvalue, jsondata, _accesstoken);
+            }
+        }
+
+        /// <summary>
+        /// Updates the profile using the CopernicaKeyField as identifier. Multiple rows will be updated if multiple rows are found with the same identifier, which is not supposed to happen.
+        /// </summary>
+        /// <param name="profile"></param>
+        /// <returns></returns>
         public void Update(ICopernicaProfile profile)
         {
             var value = profile.GetKeyFieldValue();
@@ -145,6 +177,13 @@ namespace Arlanet.CopernicaNET
                 string jsondata = JsonConvert.SerializeObject(profile);
                 _dataHandler.UpdateProfile(profile.DatabaseId, keyname, keyvalue, jsondata, _accesstoken);
             }
+        }
+
+        public void Update(ICopernicaSubprofile subprofile)
+        {
+            string jsondata = JsonConvert.SerializeObject(subprofile);
+            var id = GetCopernicaSubProfileId(subprofile);
+            _dataHandler.UpdateSubProfile(id, jsondata, _accesstoken);
         }
 
         /// <summary>
@@ -263,6 +302,22 @@ namespace Arlanet.CopernicaNET
             catch (Exception ex)
             {
                 throw new CopernicaException("The profile was not found.", ex);
+            }
+        }
+
+        private int GetCopernicaSubProfileId(ICopernicaSubprofile subprofile)
+        {
+            var response = _dataHandler.GetSubProfileByKey(subprofile.CollectionId, subprofile.GetKeyFieldName(), subprofile.GetKeyFieldValue(), _accesstoken);
+            dynamic data = JObject.Parse(response);
+
+            try
+            {
+                var id = data.data[0].ID.Value;
+                return Int32.Parse(id);
+            }
+            catch (Exception ex)
+            {
+                throw new CopernicaException("The subprofile was not found.", ex);
             }
         }
 

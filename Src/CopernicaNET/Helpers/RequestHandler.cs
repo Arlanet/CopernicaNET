@@ -5,10 +5,12 @@ using Arlanet.CopernicaNET.Data;
 
 namespace Arlanet.CopernicaNET.Helpers
 {
+    using Arlanet.CopernicaNET.Configuration;
+
     public static class RequestHandler
     {
         #region Class Variables
-        private static readonly Uri BaseAddress = new Uri("https://api.copernica.com/");
+        private static readonly Uri BaseAddress = new Uri(CopernicaSettings.Settings.ApiUrl);
         #endregion
 
         #region Public Methods

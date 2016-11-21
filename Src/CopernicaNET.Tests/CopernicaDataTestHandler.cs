@@ -31,6 +31,16 @@ namespace Arlanet.CopernicaNET.Tests
             
         }
 
+        public string GetSubProfileByKey(int subprofileid, string keyname, string keyvalue, string accesstoken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetSubProfileByKeys(int subprofileid, Dictionary<string, string> keys, string accesstoken)
+        {
+            throw new NotImplementedException();
+        }
+
         public void CreateDatabase(string jsondata, string accesstoken)
         {
 
@@ -55,6 +65,22 @@ namespace Arlanet.CopernicaNET.Tests
         {
      
         }
+
+        public void UpdateSubProfile(int databaseid, string jsondata, string accesstoken)
+        {
+
+        }
+
+        public void CreateOrUpdateProfile(int databaseid, string keyname, string keyvalue, string jsondata, string accesstoken)
+        {
+
+        }
+
+        public void CreateOrUpdateSubProfile(int collectionid, int profileid, string keyname, string keyvalue, string jsondata, string accesstoken)
+        {
+
+        }
+
         public string GetProfileFields(int databaseid, string accesstoken)
         {
             return fields;

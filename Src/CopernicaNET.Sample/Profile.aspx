@@ -37,6 +37,7 @@
             <div class="col-md-offset-2 col-md-10">
                 <asp:Button runat="server" OnClick="Add_Profile" Text="Add" CssClass="btn btn-default" />
                 <asp:Button runat="server" OnClick="Update_Profile" Text="Update" CssClass="btn btn-default" />
+                <asp:Button runat="server" OnClick="CreateOrUpdate_Profile" Text="Add or update" CssClass="btn btn-default" />
                 <asp:Button runat="server" OnClick="Delete_Profile" Text="Delete" CssClass="btn btn-default" />
             </div> 
         </div>
