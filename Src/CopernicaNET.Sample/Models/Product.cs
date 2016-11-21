@@ -7,6 +7,9 @@ namespace Arlanet.CopernicaNET.Sample.Models
     [CopernicaConfigurableCollection(typeof(Product))]
     public class Product : CopernicaSubprofile
     {
+        [CopernicaKeyField("ProductId", Type = CopernicaFieldTypes.IntField, Length = 50)]
+        public int ID { get; set; }
+
         [CopernicaField("ProductName", Type = CopernicaFieldTypes.TextField, Length = 50)]
         public string Name { get; set; }
 

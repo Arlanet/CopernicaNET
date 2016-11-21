@@ -8,6 +8,10 @@ namespace Arlanet.CopernicaNET.Interfaces.Handlers
 
         string GetProfileByKeys(int databaseid, Dictionary<string, string> keys, string accesstoken);
 
+        string GetSubProfileByKey(int subprofileid, string keyname, string keyvalue, string accesstoken);
+
+        string GetSubProfileByKeys(int subprofileid, Dictionary<string, string> keys, string accesstoken);
+
         void CreateDatabase(string jsondata, string accesstoken);
 
         void DeleteProfile(int profileid, string accesstoken);
@@ -17,6 +21,13 @@ namespace Arlanet.CopernicaNET.Interfaces.Handlers
         void CreateSubProfile(int collectionid, int profileid, string jsondata, string accesstoken);
 
         void UpdateProfile(int databaseid, string keyname, string keyvalue, string jsondata, string accesstoken);
+
+        void UpdateSubProfile(int databaseid, string jsondata, string accesstoken);
+
+        void CreateOrUpdateProfile(int databaseid, string keyname, string keyvalue, string jsondata, string accesstoken);
+
+        void CreateOrUpdateSubProfile(int collectionid, int profileid, string keyname, string keyvalue, string jsondata, string accesstoken);
+        
         string GetProfileFields(int databaseid, string accesstoken);
         string GetSubProfileFields(int collectionid, string accesstoken);
     }
