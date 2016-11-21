@@ -242,6 +242,17 @@ namespace Arlanet.CopernicaNET
         }
 
         /// <summary>
+        /// Adds the specified subprofile to the referenced profile.
+        /// </summary>
+        /// <param name="subprofile">The subprofile.</param>
+        /// <param name="profileId">The reference profile id.</param>
+        public void Add(ICopernicaSubprofile subprofile, int profileId)
+        {
+            string jsondata = JsonConvert.SerializeObject(subprofile);
+            _dataHandler.CreateSubProfile(subprofile.CollectionId, profileId, jsondata, _accesstoken);
+        }
+
+        /// <summary>
         /// Deletes the specified profile.
         /// </summary>
         /// <param name="profile">The profile.</param>
