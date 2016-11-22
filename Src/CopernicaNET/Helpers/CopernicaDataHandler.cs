@@ -37,10 +37,10 @@ namespace Arlanet.CopernicaNET.Helpers
 
         public void CreateDatabase(string jsondata, string accesstoken)
         {
-            string keyfields = fields.Aggregate("", (current, key) => current + ("&" + key.Key + "==" + key.Value));
-            string requestUrl = string.Format(DatabaseCalls.GET.GetProfileByFields, DatabaseId, Accesstoken, keyfields);
+            //string keyfields = fields.Aggregate("", (current, key) => current + ("&" + key.Key + "==" + key.Value));
+            //string requestUrl = string.Format(DatabaseCalls.GET.GetProfileByFields, DatabaseId, Accesstoken, keyfields);
             
-            return RequestHandler.Get(requestUrl);
+            //return RequestHandler.Get(requestUrl);
         }
 
         public void CreateDatabase(string jsondata)

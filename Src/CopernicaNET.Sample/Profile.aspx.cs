@@ -79,12 +79,12 @@ namespace Arlanet.CopernicaNET.Sample
         protected void CreateOrUpdate_Profile(object sender, EventArgs e)
         {
             //Create the client
-            var client = new Client { ID = Int32.Parse(ProfileID.Text), Name = ProfileName.Text, Email = ProfileEmail.Text };
+            //var client = new Client { ID = Int32.Parse(ProfileID.Text), Name = ProfileName.Text, Email = ProfileEmail.Text };
 
             try
             {
                 //Add the client profile
-                CopernicaHandler.Instance.CreateOrUpdate(client);
+                //CopernicaHandler.Instance.CreateOrUpdate(client);
                 StatusLabel.Text = "The profile has been added or updated";
             }
             catch (CopernicaException ex)
