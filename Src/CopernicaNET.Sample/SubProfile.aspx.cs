@@ -16,11 +16,11 @@ namespace Arlanet.CopernicaNET.Sample
             //Create the product
             var product = new Product { ID = Int32.Parse(ProductID.Text), Name = SubProfileName.Text, Price = Int32.Parse(Price.Text) };
             //Create the client. Only the identifier is needed. 
-            var client = new Client() { ID = Int32.Parse(ProfileID.Text) };
+            var client = new Client() { DatabaseId = Int32.Parse(ProfileID.Text) };
             //Add the product to the client.
             try
             {
-                CopernicaHandler.Instance.Add(product, client);
+                //CopernicaHandler.Instance.Add(product, client);
                 StatusLabel.Text = "The subprofile has been added";
             }
             catch (CopernicaException ex)

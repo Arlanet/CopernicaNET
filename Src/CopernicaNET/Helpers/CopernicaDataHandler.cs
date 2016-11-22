@@ -1,21 +1,26 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Arlanet.CopernicaNET.Data;
 using Arlanet.CopernicaNET.Interfaces.Handlers;
 
 namespace Arlanet.CopernicaNET.Helpers
 {
-    internal class CopernicaDataHandler : ICopernicaDataHandler
+    internal class CopernicaDataHandler
     {
-        public string GetProfileByKey(int databaseid, string keyname, string keyvalue, string accesstoken)
+        private string Accesstoken { get; }
+        private int DatabaseId { get; }
+
+        public CopernicaDataHandler(string accesstoken, int databaseId)
         {
-            return RequestHandler.Get(string.Format("database/{0}/profiles?access_token={1}&fields[]={2}=={3}", databaseid, accesstoken, keyname, keyvalue));
+            Accesstoken = accesstoken;
+            DatabaseId = databaseId;
         }
 
-        public string GetProfileByKeys(int databaseid, Dictionary<string, string> keys, string accesstoken)
+        public string GetProfileByField(string fieldName, string fieldValue)
         {
-            string keyfields = keys.Aggregate("", (current, key) => current + ("&" + key.Key + "==" + key.Value));
+            string requestUrl = string.Format(DatabaseCalls.GET.GetProfileByField, DatabaseId, Accesstoken, fieldName, fieldValue);
 
-            return RequestHandler.Get(string.Format("database/{0}/profiles?access_token={1}&fields[]={2}", databaseid, accesstoken, keyfields));
+            return RequestHandler.Get(requestUrl);
         }
 
         public string GetSubProfileByKey(int subprofileid, string keyname, string keyvalue, string accesstoken)
@@ -32,27 +37,40 @@ namespace Arlanet.CopernicaNET.Helpers
 
         public void CreateDatabase(string jsondata, string accesstoken)
         {
-            RequestHandler.Post(string.Format("databases?access_token={0}", accesstoken), "{" + jsondata + "}");
+            string keyfields = fields.Aggregate("", (current, key) => current + ("&" + key.Key + "==" + key.Value));
+            string requestUrl = string.Format(DatabaseCalls.GET.GetProfileByFields, DatabaseId, Accesstoken, keyfields);
+            
+            return RequestHandler.Get(requestUrl);
         }
 
-        public void DeleteProfile(int profileid, string accesstoken)
+        public void CreateDatabase(string jsondata)
         {
-            RequestHandler.Delete(string.Format("profile/{0}?access_token={1}", profileid, accesstoken));
+            string requestUrl = string.Format(DatabaseCalls.POST.CreateDatabase, Accesstoken);
+            RequestHandler.Post(requestUrl, "{" + jsondata + "}");
         }
 
-        public void CreateProfile(int databaseid, string jsondata, string accesstoken)
+        public void DeleteProfile(int profileid)
         {
-            RequestHandler.Post(string.Format("database/{0}/profiles?access_token={1}", databaseid, accesstoken), jsondata);
+            string requestUrl = string.Format(DatabaseCalls.POST.DeleteProfile, profileid, Accesstoken);
+            RequestHandler.Delete(requestUrl);
         }
 
-        public void CreateSubProfile(int collectionid, int profileid, string jsondata, string accesstoken)
+        public void CreateProfile(string jsondata)
         {
-            RequestHandler.Post(string.Format("profile/{0}/subprofiles/{1}?access_token={2}", profileid, collectionid, accesstoken), jsondata);
+            string requestUrl = string.Format(DatabaseCalls.POST.CreateProfile, DatabaseId, Accesstoken);
+            RequestHandler.Post(requestUrl, jsondata);
         }
 
-        public void UpdateProfile(int databaseid, string keyname, string keyvalue, string jsondata, string accesstoken)
+        public void CreateSubProfile(int collectionid, int profileid, string jsondata)
         {
-            RequestHandler.Put(string.Format("database/{0}/profiles?access_token={1}&fields[]={2}=={3}", databaseid, accesstoken, keyname, keyvalue), jsondata);
+            string requestUrl = string.Format(DatabaseCalls.POST.CreateSubProfile, profileid, collectionid, Accesstoken);
+            RequestHandler.Post(requestUrl, jsondata);
+        }
+
+        public void UpdateProfile(string fieldName, string fieldValue, string jsondata)
+        {
+            string requestUrl = string.Format(DatabaseCalls.PUT.UpdateProfile, DatabaseId, Accesstoken, fieldName, fieldValue);
+            RequestHandler.Put(requestUrl, jsondata);
         }
 
         public void UpdateSubProfile(int databaseid, string jsondata, string accesstoken)
@@ -72,12 +90,14 @@ namespace Arlanet.CopernicaNET.Helpers
 
         public string GetProfileFields(int databaseid, string accesstoken)
         {
-            return RequestHandler.Get(string.Format("database/{0}/fields?access_token={1}", databaseid, accesstoken));
+            string requestUrl = string.Format(DatabaseCalls.GET.GetProfileFields, DatabaseId, Accesstoken);
+            return RequestHandler.Get(requestUrl);
         }
 
-        public string GetSubProfileFields(int collectionid, string accesstoken)
+        public string GetSubProfileFields(int collectionid)
         {
-            return RequestHandler.Get(string.Format("collection/{0}/fields?access_token={1}", collectionid, accesstoken));
+            string requestUrl = string.Format(DatabaseCalls.GET.GetSubProfileFields, collectionid, Accesstoken);
+            return RequestHandler.Get(requestUrl);
         }
     }
 }

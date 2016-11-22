@@ -22,7 +22,7 @@ namespace Arlanet.CopernicaNET
         public Copernica(string accesstoken)
         {
             _accesstoken = accesstoken;
-            _dataHandler = new CopernicaDataHandler();
+            //_dataHandler = new CopernicaDataHandler();
         }
 
         public Copernica(string accesstoken, ICopernicaDataHandler handler)
