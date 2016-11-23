@@ -51,28 +51,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attributes\CopernicaAttributeBase.cs" />
-    <Compile Include="Attributes\CopernicaCollection.cs" />
-    <Compile Include="Attributes\CopernicaConfigurableCollection.cs" />
-    <Compile Include="Attributes\CopernicaConfigurableDatabase.cs" />
-    <Compile Include="Attributes\CopernicaDatabase.cs" />
-    <Compile Include="Attributes\CopernicaField.cs" />
-    <Compile Include="Attributes\CopernicaKey.cs" />
-    <Compile Include="Attributes\CopernicaKeyField.cs" />
+    <Compile Include="Attributes\Collection.cs" />
+    <Compile Include="Attributes\Column.cs" />
+    <Compile Include="Attributes\Key.cs" />
     <Compile Include="Configuration\CopernicaSettings.cs" />
-    <Compile Include="Copernica.cs" />
     <Compile Include="CopernicaDbContext.cs" />
-    <Compile Include="Data\CopernicaBase.cs" />
-    <Compile Include="Data\CopernicaFieldTypes.cs" />
-    <Compile Include="Data\CopernicaSubprofile.cs" />
-    <Compile Include="Data\CoperrrnicaProfile.cs" />
+    <Compile Include="Data\FieldTypes.cs" />
     <Compile Include="Data\CopernicaException.cs" />
     <Compile Include="Data\DatabaseCalls.cs" />
     <Compile Include="Helpers\CopernicaDataHandler.cs" />
-    <Compile Include="Helpers\JsonFieldsConverter.cs" />
+    <Compile Include="Helpers\JsonContractResolver.cs" />
     <Compile Include="Helpers\Reflectionist.cs" />
     <Compile Include="Helpers\RequestHandler.cs" />
-    <Compile Include="Helpers\Validator.cs" />
     <Compile Include="Interfaces\Handlers\ICopernicaDataHandler.cs" />
     <Compile Include="Interfaces\Handlers\ICopernicaHandlerBase.cs" />
     <Compile Include="Interfaces\Data\ICopernicaSubprofile.cs" />
@@ -81,6 +71,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Types\Collection.cs" />
     <Compile Include="Types\CopernicaProfile.cs" />
+    <Compile Include="Types\CopernicaSubProfile.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

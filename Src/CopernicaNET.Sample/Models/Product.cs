@@ -3,17 +3,15 @@ using Arlanet.CopernicaNET.Data;
 
 namespace Arlanet.CopernicaNET.Sample.Models
 {
-    [CopernicaConfigurableDatabase(typeof(Product))]
-    [CopernicaConfigurableCollection(typeof(Product))]
-    public class Product : CopernicaSubprofile
+    public class Product
     {
-        [CopernicaKeyField("ProductId", Type = CopernicaFieldTypes.IntField, Length = 50)]
+        [Key]
         public int ID { get; set; }
 
-        [CopernicaField("ProductName", Type = CopernicaFieldTypes.TextField, Length = 50)]
+        [Column]
         public string Name { get; set; }
 
-        [CopernicaField("Price", Type = CopernicaFieldTypes.IntField, Length = 50)]
+        [Column("TotalPrice")]
         public int Price { get; set; }
 
     }

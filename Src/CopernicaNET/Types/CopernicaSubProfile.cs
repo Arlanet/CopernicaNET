@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Arlanet.CopernicaNET.Attributes
+namespace Arlanet.CopernicaNET.Types
 {
-    public class CopernicaKey : Attribute
+    public class CopernicaSubProfile<T> : CopernicaProfile<T> where T : class, new()
     {
+
     }
 }

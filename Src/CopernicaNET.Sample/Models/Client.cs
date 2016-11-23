@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using Arlanet.CopernicaNET.Attributes;
-using Arlanet.CopernicaNET.Data;
-using Arlanet.CopernicaNET.Types;
 
 namespace Arlanet.CopernicaNET.Sample.Models
 {
@@ -21,13 +19,16 @@ namespace Arlanet.CopernicaNET.Sample.Models
 
     public class Client
     {
-        [CopernicaKey]
+        [Key("ID")]
         public int DatabaseId { get; set; }
         
+        [Column]
         public string Name { get; set; }
 
+        [Column("EmailAddress")]
         public string Email { get; set; }
 
-        //public virtual CopCollection<Product> Products { get; set; } 
+        [Collection(5)]
+        public IEnumerable<Product> Products { get; set; }
     }
 }

@@ -25,14 +25,20 @@ namespace Arlanet.CopernicaNET.Helpers
 
         public string GetSubProfileByKey(int subprofileid, string keyname, string keyvalue, string accesstoken)
         {
-            return RequestHandler.Get(string.Format("collection/{0}/subprofiles?access_token={1}&fields[]={2}=={3}", subprofileid, accesstoken, keyname, keyvalue));
+            string requestUrl = string.Format(DatabaseCalls.GET.GetSubProfileByKey, subprofileid, accesstoken, keyname,
+                keyvalue);
+
+            return RequestHandler.Get(requestUrl);
         }
 
         public string GetSubProfileByKeys(int subprofileid, Dictionary<string, string> keys, string accesstoken)
         {
             string keyfields = keys.Aggregate("", (current, key) => current + ("&" + key.Key + "==" + key.Value));
 
-            return RequestHandler.Get(string.Format("collection/{0}/subprofiles?access_token={1}&fields[]={2}", subprofileid, accesstoken, keyfields));
+            string requestUrl = string.Format(DatabaseCalls.GET.GetSubProfileByKeys, subprofileid, accesstoken,
+                keyfields);
+
+            return RequestHandler.Get(requestUrl);
         }
 
         public void CreateDatabase(string jsondata, string accesstoken)
@@ -55,15 +61,15 @@ namespace Arlanet.CopernicaNET.Helpers
             RequestHandler.Delete(requestUrl);
         }
 
-        public void CreateProfile(string jsondata)
+        public void AddProfile(string jsondata)
         {
-            string requestUrl = string.Format(DatabaseCalls.POST.CreateProfile, DatabaseId, Accesstoken);
+            string requestUrl = string.Format(DatabaseCalls.POST.AddProfile, DatabaseId, Accesstoken);
             RequestHandler.Post(requestUrl, jsondata);
         }
 
-        public void CreateSubProfile(int collectionid, int profileid, string jsondata)
+        public void AddSubProfile(int collectionid, int profileid, string jsondata)
         {
-            string requestUrl = string.Format(DatabaseCalls.POST.CreateSubProfile, profileid, collectionid, Accesstoken);
+            string requestUrl = string.Format(DatabaseCalls.POST.AddSubProfile, profileid, collectionid, Accesstoken);
             RequestHandler.Post(requestUrl, jsondata);
         }
 
@@ -75,17 +81,24 @@ namespace Arlanet.CopernicaNET.Helpers
 
         public void UpdateSubProfile(int databaseid, string jsondata, string accesstoken)
         {
-            RequestHandler.Post(string.Format("subprofile/{0}/fields?access_token={1}", databaseid, accesstoken), jsondata);
+            string requestUrl = string.Format(DatabaseCalls.POST.UpdateSubProfile, databaseid, accesstoken);
+            RequestHandler.Post(requestUrl, jsondata);
         }
 
-        public void CreateOrUpdateProfile(int databaseid, string keyname, string keyvalue, string jsondata, string accesstoken)
+        public void AddOrUpdateProfile(int databaseid, string keyname, string keyvalue, string jsondata, string accesstoken)
         {
-            RequestHandler.Put(string.Format("database/{0}/profiles?access_token={1}&fields[]={2}=={3}&create=true", databaseid, accesstoken, keyname, keyvalue), jsondata);
+            string requestUrl = string.Format(DatabaseCalls.PUT.AddOrUpdateProfile, databaseid, accesstoken, keyname,
+                keyvalue);
+
+            RequestHandler.Put(requestUrl, jsondata);
         }
 
-        public void CreateOrUpdateSubProfile(int collectionid, int profileid, string keyname, string keyvalue, string jsondata, string accesstoken)
+        public void AddOrUpdateSubProfile(int collectionid, int profileid, string keyname, string keyvalue, string jsondata, string accesstoken)
         {
-            RequestHandler.Put(string.Format("profile/{0}/subprofiles/{1}?access_token={2}&fields[]={3}=={4}&create=true", profileid, collectionid, accesstoken, keyname, keyvalue), jsondata);
+            string requestUrl = string.Format(DatabaseCalls.PUT.AddOrUpdateSubProfile, profileid, collectionid,
+                accesstoken, keyname, keyvalue);
+
+            RequestHandler.Put(requestUrl, jsondata);
         }
 
         public string GetProfileFields(int databaseid, string accesstoken)

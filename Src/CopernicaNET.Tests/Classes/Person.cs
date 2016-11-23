@@ -6,13 +6,13 @@ namespace Arlanet.CopernicaNET.Tests.Classes
     [CopernicaDatabase(108)]
     public class Person : CopernicaProfile
     {
-        [CopernicaKeyField("DatabaseId", Type = CopernicaFieldTypes.IntField, Length = 50)]
+        [CopernicaKeyField("DatabaseId", Type = FieldTypes.IntField, Length = 50)]
         public int ID { get; set; }
 
-        [CopernicaField("Name", Type = CopernicaFieldTypes.TextField, Length = 50)]
+        [CopernicaField("Name", Type = FieldTypes.TextField, Length = 50)]
         public string Name { get; set; }
 
-        [CopernicaField("Email", Type = CopernicaFieldTypes.EmailField, Length = 50)]
+        [CopernicaField("Email", Type = FieldTypes.EmailField, Length = 50)]
         public string Email { get; set; }
     }
 }

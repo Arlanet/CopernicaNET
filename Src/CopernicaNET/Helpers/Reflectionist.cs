@@ -17,7 +17,7 @@ namespace Arlanet.CopernicaNET.Helpers
             PropertyInfo[] properties = item.GetType().GetProperties();
             PropertyInfo property =
                 properties.FirstOrDefault(
-                    x => x.GetCustomAttributes(false).Any(y => y.GetType() == typeof(CopernicaKey)));
+                    x => x.GetCustomAttributes(false).Any(y => y.GetType() == typeof(Key)));
 
             if (property == null) //There is no property with a key attribute
             {
@@ -35,6 +35,10 @@ namespace Arlanet.CopernicaNET.Helpers
         public int GetDatabaseId(Type type)
         {
             var modelConfiguration = CopernicaSettings.Settings.ModelConfigurations.FirstOrDefault(m => m.Name == type.FullName);
+
+            if(modelConfiguration == null)
+                throw new CopernicaException($"Type '{{type.Fullname}}' is not correctly configured");
+            
             return modelConfiguration.DatabaseId;
         }
     }

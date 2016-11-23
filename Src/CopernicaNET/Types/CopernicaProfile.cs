@@ -11,7 +11,7 @@ namespace Arlanet.CopernicaNET.Types
     {
         private Reflectionist Reflectionist { get; }
         private CopernicaSettings CopernicaSettings { get; }
-        private CopernicaDataHandler DataHandler { get; }
+        private CopernicaDataHandler CopernicaDatabase { get; }
 
         private int DatabaseId { get; }
 
@@ -21,13 +21,13 @@ namespace Arlanet.CopernicaNET.Types
             CopernicaSettings = new CopernicaSettings();
 
             DatabaseId = Reflectionist.GetDatabaseId(typeof(T));
-            DataHandler = new CopernicaDataHandler(CopernicaSettings.Settings.AccessToken, DatabaseId);
+            CopernicaDatabase = new CopernicaDataHandler(CopernicaSettings.Settings.AccessToken, DatabaseId);
         }
         
         public T Add(T item)
         {
             string jsondata = JsonConvert.SerializeObject(item);
-            DataHandler.CreateProfile(jsondata);
+            CopernicaDatabase.AddProfile(jsondata);
 
             return item;
         }
@@ -39,9 +39,10 @@ namespace Arlanet.CopernicaNET.Types
 
         public void Remove(T item)
         {
-            DataHandler.DeleteProfile(Reflectionist.GetKey(item));
+            CopernicaDatabase.DeleteProfile(Reflectionist.GetKey(item));
         }
 
+        //TODO: Further research lamba expressions
         public IEnumerable<T> FirstOrDefault(Expression<Func<T, bool>> predicate)
         {
             var expression = (BinaryExpression)predicate.Body;
