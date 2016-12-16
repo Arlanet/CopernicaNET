@@ -19,7 +19,8 @@ namespace Arlanet.CopernicaNET.Sample.Models
 
     public class Client
     {
-        [Key("ID")]
+        [Key]
+        [Column("DatabaseId")]
         public int DatabaseId { get; set; }
         
         [Column]
@@ -28,7 +29,7 @@ namespace Arlanet.CopernicaNET.Sample.Models
         [Column("EmailAddress")]
         public string Email { get; set; }
 
-        [Collection(5)]
-        public IEnumerable<Product> Products { get; set; }
+        //[Collection(5)]
+        //public IEnumerable<Product> Products { get; set; }
     }
 }

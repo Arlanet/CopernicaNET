@@ -12,22 +12,15 @@ namespace Arlanet.CopernicaNET.Helpers
 {
     public class JsonContractResolver : DefaultContractResolver
     {
-        public JsonContractResolver()
-        {
-            
-        }
-
         protected override JsonProperty CreateProperty(MemberInfo member, MemberSerialization memberSerialization)
         {
             var property = base.CreateProperty(member, memberSerialization);
+            
+            string columnName = member.GetCustomAttribute<Column>()?.Name;
 
-            string propertyName = property.PropertyType.GetCustomAttribute<Column>().Name;
-
-            if (!string.IsNullOrEmpty(propertyName))
-            {
-                property.PropertyName = propertyName;
-            }
-
+            if (!string.IsNullOrEmpty(columnName))
+                property.PropertyName = columnName;
+            
             return property;
         }
     }

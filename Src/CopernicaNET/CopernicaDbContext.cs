@@ -17,13 +17,20 @@ namespace Arlanet.CopernicaNET
 
         public CopernicaDbContext()
         {
-            InstantiateProperties();
-            InitSerializationSettings();
+            Configuration();
         }
 
-        private void InstantiateProperties()
+        private void Configuration()
         {
-            IEnumerable<PropertyInfo> properties = this.GetType().GetProperties().Where(prop => prop.PropertyType.Name == typeof(CopernicaProfile<Object>).Name);
+            ConfigureProfiles();
+            ConfigureJsonSerialization();
+        }
+
+        private void ConfigureProfiles()
+        {
+            IEnumerable<PropertyInfo> properties = this.GetType().GetProperties()
+                .Where(prop => prop.PropertyType.Name == typeof(CopernicaProfile<Object>).Name
+                            || prop.PropertyType.Name == typeof(CopernicaSubProfile<Object>).Name);
 
             this.Properties = properties;
 
@@ -33,13 +40,12 @@ namespace Arlanet.CopernicaNET
             }
         }
 
-        private void InitSerializationSettings()
+        private void ConfigureJsonSerialization()
         {
             JsonConvert.DefaultSettings = () => new JsonSerializerSettings
             {
                 Formatting = Formatting.Indented,
-                TypeNameHandling = TypeNameHandling.Objects,
-                ContractResolver = new JsonContractResolver() //Use our custom class for property name resolving
+                ContractResolver = new JsonContractResolver()
             };
         }
     }

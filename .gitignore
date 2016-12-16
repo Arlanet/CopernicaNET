@@ -4,3 +4,4 @@ bin
 obj
 *.suo
 *.user
+/Src/CopernicaNET.Sample/Web.Dev.config

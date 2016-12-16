@@ -34,7 +34,10 @@ namespace Arlanet.CopernicaNET.Types
 
         public void Update(T item)
         {
-            
+            string jsondata = JsonConvert.SerializeObject(item);
+            //string idName = Reflectionist.GetKey
+
+            //CopernicaDatabase.UpdateProfile(jsondata, );
         }
 
         public void Remove(T item)

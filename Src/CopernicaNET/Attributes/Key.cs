@@ -7,14 +7,9 @@ using System.Threading.Tasks;
 namespace Arlanet.CopernicaNET.Attributes
 {
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = true)]
-    public class Key : Column
+    public class Key : Attribute
     {
         public Key()
-        {
-            
-        }
-
-        public Key(string name) : base(name)
         {
             
         }
