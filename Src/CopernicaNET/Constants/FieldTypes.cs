@@ -1,4 +1,4 @@
-﻿namespace Arlanet.CopernicaNET.Data
+﻿namespace Arlanet.CopernicaNET.Constants
 {
     public static class FieldTypes
     {

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Arlanet.CopernicaNET.Configuration;
-using Arlanet.CopernicaNET.Helpers;
+using Arlanet.CopernicaNET.Utils;
+using Arlanet.CopernicaNET.Services;
 using Newtonsoft.Json;
 using System;
 using System.Linq.Expressions;
@@ -9,19 +10,19 @@ namespace Arlanet.CopernicaNET.Types
 {
     public class CopernicaProfile<T> where T : class, new()
     {
-        private Reflectionist Reflectionist { get; }
+        private Reflector Reflectionist { get; }
         private CopernicaSettings CopernicaSettings { get; }
-        private CopernicaDataHandler CopernicaDatabase { get; }
+        private CopernicaService CopernicaDatabase { get; }
 
         private int DatabaseId { get; }
 
         public CopernicaProfile()
         {
-            Reflectionist = new Reflectionist();
+            Reflectionist = new Reflector();
             CopernicaSettings = new CopernicaSettings();
 
             DatabaseId = Reflectionist.GetDatabaseId(typeof(T));
-            CopernicaDatabase = new CopernicaDataHandler(CopernicaSettings.Settings.AccessToken, DatabaseId);
+            CopernicaDatabase = new CopernicaService(CopernicaSettings.Settings.AccessToken, DatabaseId);
         }
         
         public T Add(T item)

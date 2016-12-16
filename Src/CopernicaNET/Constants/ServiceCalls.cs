@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Arlanet.CopernicaNET.Data
+﻿namespace Arlanet.CopernicaNET.Constants
 {
-    public static class DatabaseCalls
+    public static class ServiceCalls
     {
         public static class POST
         {

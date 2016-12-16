@@ -2,15 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using Arlanet.CopernicaNET.Attributes;
-using Arlanet.CopernicaNET.Data;
 using Arlanet.CopernicaNET.Configuration;
 
-namespace Arlanet.CopernicaNET.Helpers
+namespace Arlanet.CopernicaNET.Utils
 {
-    public class Reflectionist
+    public class Reflector
     {
         public int GetKey<T>(T item)
         {
@@ -30,6 +27,11 @@ namespace Arlanet.CopernicaNET.Helpers
             string keyValue = property.GetValue(item).ToString();
 
             return Int32.Parse(keyValue);
+        }
+
+        public IEnumerable<Object> GetFields()
+        {
+            return new List<Object>();
         }
         
         public int GetDatabaseId(Type type)
