@@ -43,5 +43,29 @@ namespace Arlanet.CopernicaNET.Utils
             
             return modelConfiguration.DatabaseId;
         }
+
+        public int GetDatabaseId<T>(T item)
+        {
+            var modelConfiguration = CopernicaSettings.Settings.ModelConfigurations.FirstOrDefault(m => m.Name == item.GetType().FullName);
+
+            if (modelConfiguration == null)
+                throw new CopernicaException($"Type '{{type.Fullname}}' is not correctly configured");
+
+            return modelConfiguration.DatabaseId;
+        }
+
+        public IEnumerable<int> GetDatabaseIds(IEnumerable<PropertyInfo> profiles)
+        {
+            var databaseIds = new List<int>();
+
+            foreach (var profile in profiles)
+            {
+                var profileType = profile.GetType().GetGenericArguments().Single();
+
+                databaseIds.Add(GetDatabaseId(profileType));
+            }
+
+            return databaseIds;
+        }
     }
 }

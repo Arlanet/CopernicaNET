@@ -13,6 +13,8 @@
 
         public static class GET
         {
+            public const string GetDatabases = "databases?access_token={0}";
+
             public const string GetProfileByField = "database/{0}/profiles?access_token={1}&fields[]={2}=={3}";
             public const string GetProfileByFields = "database/{0}/profiles?access_token={1}&fields[]={2}";
             public const string GetProfileFields = "database/{0}/fields?access_token={1}";

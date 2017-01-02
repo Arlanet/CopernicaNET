@@ -1,5 +1,4 @@
 ﻿using Arlanet.CopernicaNET.Attributes;
-using Arlanet.CopernicaNET.Data;
 
 namespace Arlanet.CopernicaNET.Sample.Models
 {

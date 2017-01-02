@@ -1,6 +1,6 @@
 ﻿namespace Arlanet.CopernicaNET.Constants
 {
-    public static class FieldTypes
+    public static class FieldType
     {
         public const string TextField = "text";
         public const string DateField = "date";

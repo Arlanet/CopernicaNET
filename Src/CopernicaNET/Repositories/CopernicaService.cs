@@ -55,29 +55,14 @@ namespace Arlanet.CopernicaNET.Services
             HttpRequest.Post(requestUrl, "{" + jsondata + "}");
         }
 
-        public void DeleteProfile(int profileid)
-        {
-            string requestUrl = string.Format(ServiceCalls.POST.DeleteProfile, profileid, Accesstoken);
-            HttpRequest.Delete(requestUrl);
-        }
-
-        public void AddProfile(string jsondata)
-        {
-            string requestUrl = string.Format(ServiceCalls.POST.AddProfile, DatabaseId, Accesstoken);
-            HttpRequest.Post(requestUrl, jsondata);
-        }
-
+     
         public void AddSubProfile(int collectionid, int profileid, string jsondata)
         {
             string requestUrl = string.Format(ServiceCalls.POST.AddSubProfile, profileid, collectionid, Accesstoken);
             HttpRequest.Post(requestUrl, jsondata);
         }
 
-        public void UpdateProfile(string fieldName, string fieldValue, string jsondata)
-        {
-            string requestUrl = string.Format(ServiceCalls.PUT.UpdateProfile, DatabaseId, Accesstoken, fieldName, fieldValue);
-            HttpRequest.Put(requestUrl, jsondata);
-        }
+     
 
         public void UpdateSubProfile(int databaseid, string jsondata, string accesstoken)
         {

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Data.Entity;
 using Arlanet.CopernicaNET.Sample.Models;
-using Arlanet.CopernicaNET.Data;
 
 namespace Arlanet.CopernicaNET.Sample
 {
