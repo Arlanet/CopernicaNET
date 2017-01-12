@@ -10,41 +10,27 @@ namespace Arlanet.CopernicaNET.Helpers
     public static class RequestHandler
     {
         #region Class Variables
+
         private static readonly Uri BaseAddress = new Uri(CopernicaSettings.Settings.ApiUrl);
+
         #endregion
 
-        #region Public Methods
-       
-        public static HttpWebResponse Post(string posturl, string jsoninput)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create(BaseAddress + posturl);
-            httpWebRequest.ContentType = "application/json";
-            httpWebRequest.Method = "POST";
 
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                streamWriter.Write(jsoninput);
-                streamWriter.Flush();
-                streamWriter.Close();
-                return (HttpWebResponse)httpWebRequest.GetResponse();
-            }   
-        }
+        #region Public Methods
 
         public static string Get(string geturl)
         {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create(BaseAddress + geturl);
-            httpWebRequest.ContentType = "application/json";
-            httpWebRequest.Method = "GET";
+            var httpWebRequest = CreateWebRequest(geturl, "GET");
+
             try
             {
-                var response = (HttpWebResponse) httpWebRequest.GetResponse();
-                string text = "";
-                using (var sr = new StreamReader(response.GetResponseStream()))
+                using (var response = httpWebRequest.GetResponse())
                 {
-                    text = sr.ReadToEnd();
+                    using (var sr = new StreamReader(response.GetResponseStream()))
+                    {
+                        return sr.ReadToEnd();
+                    }
                 }
-
-                return text;
             }
             catch (Exception ex)
             {
@@ -52,29 +38,68 @@ namespace Arlanet.CopernicaNET.Helpers
             }
         }
 
-        public static HttpWebResponse Put(string posturl, string jsoninput)
+        public static HttpStatusCode Post(string posturl, string jsoninput)
         {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create(BaseAddress + posturl);
-            httpWebRequest.ContentType = "application/json";
-            httpWebRequest.Method = "PUT";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            using (var httpWebResponse = PostResponse(posturl, jsoninput))
             {
-                streamWriter.Write(jsoninput);
-                streamWriter.Flush();
-                streamWriter.Close();
-
-                return (HttpWebResponse)httpWebRequest.GetResponse();
+                return httpWebResponse.StatusCode;
             }
         }
 
-        public static HttpWebResponse Delete(string posturl)
+        public static HttpWebResponse PostResponse(string posturl, string jsoninput)
         {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create(BaseAddress + posturl);
-            httpWebRequest.ContentType = "application/json";
-            httpWebRequest.Method = "DELETE";
+            return SendJson(posturl, "POST", jsoninput);
+        }
 
+        public static HttpStatusCode Put(string posturl, string jsoninput)
+        {
+            using (var httpWebResponse = PutResponse(posturl, jsoninput))
+            {
+                return httpWebResponse.StatusCode;
+            }
+        }
+
+        public static HttpWebResponse PutResponse(string puturl, string jsoninput)
+        {
+            return SendJson(puturl, "PUT", jsoninput);
+        }
+
+        public static HttpStatusCode Delete(string deleteurl)
+        {
+            using (var httpWebResponse = DeleteResponse(deleteurl))
+            {
+                return httpWebResponse.StatusCode;
+            }
+        }
+
+        public static HttpWebResponse DeleteResponse(string deleteurl)
+        {
+            var httpWebRequest = CreateWebRequest(deleteurl, "DELETE");
             return (HttpWebResponse)httpWebRequest.GetResponse();
+        }
+
+        private static HttpWebRequest CreateWebRequest(string url, string method)
+        {
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create(BaseAddress + url);
+            httpWebRequest.ContentType = "application/json";
+            httpWebRequest.Method = method;
+
+            return httpWebRequest;
+        }
+
+        private static HttpWebResponse SendJson(string url, string method, string jsoninput)
+        {
+            var httpWebRequest = CreateWebRequest(url, method);
+
+            using (var requestStream = httpWebRequest.GetRequestStream())
+            {
+                using (var streamWriter = new StreamWriter(requestStream))
+                {
+                    streamWriter.Write(jsoninput);
+                    streamWriter.Flush();
+                    return (HttpWebResponse)httpWebRequest.GetResponse();
+                }
+            }
         }
 
         #endregion
